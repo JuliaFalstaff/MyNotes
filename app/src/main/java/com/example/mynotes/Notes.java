@@ -7,7 +7,7 @@ public class Notes implements Parcelable {
     private String title;
     private String description;
     private String dateOfCreate;
-    private int index;
+    private int indexOfDescription;
 
     public Notes(String title, String description, String dateOfCreate) {
         this.title = title;
@@ -15,8 +15,8 @@ public class Notes implements Parcelable {
         this.dateOfCreate = dateOfCreate;
     }
 
-    public Notes(int index, String title) {
-        this.index = index;
+    public Notes(int indexOfDescription, String title) {
+        this.indexOfDescription = indexOfDescription;
         this.title = title;
     }
 
@@ -24,6 +24,20 @@ public class Notes implements Parcelable {
         title = in.readString();
         description = in.readString();
         dateOfCreate = in.readString();
+        indexOfDescription = in.readInt();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(title);
+        dest.writeString(description);
+        dest.writeString(dateOfCreate);
+        dest.writeInt(indexOfDescription);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<Notes> CREATOR = new Creator<Notes>() {
@@ -50,20 +64,7 @@ public class Notes implements Parcelable {
         return dateOfCreate;
     }
 
-    public int getIndex() {
-        return index;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(getTitle());
-        dest.writeString(getDescription());
-        dest.writeString(getDateOfCreate());
-        dest.writeInt(getIndex());
+    public int getIndexOfDescription() {
+        return indexOfDescription;
     }
 }
