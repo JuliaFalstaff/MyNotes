@@ -19,7 +19,8 @@ public class NotesFragment extends Fragment {
 
     private boolean isLandscape;
     public static final String CURRENT_NOTE = "CurrentNote";
-    private int currentPosition = 0;
+//    private int currentPosition = 0;
+    private Notes currentNote;
 
     public NotesFragment() {
     }
@@ -40,7 +41,7 @@ public class NotesFragment extends Fragment {
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt(CURRENT_NOTE, currentPosition);
+        outState.putParcelable(CURRENT_NOTE, currentNote);
     }
 
     @Override
@@ -48,10 +49,12 @@ public class NotesFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         isLandscape = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
         if (savedInstanceState != null) {
-            currentPosition = savedInstanceState.getInt(CURRENT_NOTE, DescriptionFragment.DEFAULT_INDEX);
+            currentNote = savedInstanceState.getParcelable(CURRENT_NOTE);
+        } else {
+            currentNote = new Notes(0, getResources().getStringArray(R.array.notes)[0]);
         }
         if (isLandscape) {
-            showDescription(currentPosition);
+            showDescription(currentNote);
         }
     }
 
@@ -68,33 +71,33 @@ public class NotesFragment extends Fragment {
             textView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showDescription(currentIndex);
-                    currentPosition = currentIndex;
+                    currentNote = new Notes(currentIndex, getResources().getStringArray(R.array.notes)[currentIndex]);
+                    showDescription(currentNote);
                 }
             });
         }
     }
 
-    void showDescription(int index) {
+    void showDescription(Notes currentNote) {
         if (isLandscape) {
-            showLandscapeDescription(index);
+            showLandscapeDescription(currentNote);
         } else {
-            showPortraitDescription(index);
+            showPortraitDescription(currentNote);
         }
     }
 
-    private void showLandscapeDescription(int index) {
-        DescriptionFragment descriptionFragment = DescriptionFragment.newInstance(index);
+    private void showLandscapeDescription(Notes currentNote) {
+        DescriptionFragment descriptionFragment = DescriptionFragment.newInstance(currentNote);
         requireActivity().getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.notes_descriptions, descriptionFragment)
                 .commit();
     }
 
-    void showPortraitDescription(int index) {
+    void showPortraitDescription(Notes currentNote) {
         Intent intent = new Intent();
         intent.setClass(getActivity(), DescriptionActivity.class);
-        intent.putExtra(DescriptionFragment.INDEX, index);
+        intent.putExtra(DescriptionFragment.NOTE, currentNote);
         startActivity(intent);
     }
 }

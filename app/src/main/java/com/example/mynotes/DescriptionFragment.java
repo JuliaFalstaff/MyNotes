@@ -14,17 +14,17 @@ import android.widget.TextView;
 
 public class DescriptionFragment extends Fragment {
 
-    public static final String INDEX = "INDEX";
+    public static final String NOTE = "NOTE";
     public static final int DEFAULT_INDEX = 0;
-    private int index = DEFAULT_INDEX;
+    private Notes note;
 
     public DescriptionFragment() {
     }
 
-    public static DescriptionFragment newInstance(int index) {
+    public static DescriptionFragment newInstance(Notes note) {
         DescriptionFragment fragment = new DescriptionFragment();
         Bundle args = new Bundle();
-        args.putInt(INDEX, index);
+        args.putParcelable(NOTE, note);
         fragment.setArguments(args);
         return fragment;
     }
@@ -33,7 +33,7 @@ public class DescriptionFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            index = getArguments().getInt(INDEX, DEFAULT_INDEX);
+            note = getArguments().getParcelable(NOTE);
         }
     }
 
@@ -44,7 +44,9 @@ public class DescriptionFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_description, container, false);
         TextView descriptionsTexView = view.findViewById(R.id.notes_descriptions);
         TypedArray arrayDescriptions = getResources().obtainTypedArray(R.array.descriptions);
-        descriptionsTexView.setText(arrayDescriptions.getResourceId(index, DEFAULT_INDEX));
+        descriptionsTexView.setText(arrayDescriptions.getResourceId(note.getIndex(), DEFAULT_INDEX));
+        TextView noteNameView = view.findViewById(R.id.textView);
+        noteNameView.setText(note.getTitle());
         return view;
     }
 }

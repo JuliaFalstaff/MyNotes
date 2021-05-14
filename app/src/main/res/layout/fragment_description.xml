@@ -8,6 +8,13 @@
     tools:context=".DescriptionFragment">
 
     <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="TextView" />
+
+    <TextView
         android:id="@+id/notes_descriptions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

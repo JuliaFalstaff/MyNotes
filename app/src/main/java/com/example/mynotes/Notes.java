@@ -15,6 +15,12 @@ public class Notes implements Parcelable {
         this.dateOfCreate = dateOfCreate;
     }
 
+    public Notes(int index, String title) {
+        this.index = index;
+        this.title = title;
+    }
+
+
     protected Notes(Parcel in) {
         title = in.readString();
         description = in.readString();
@@ -33,11 +39,6 @@ public class Notes implements Parcelable {
         }
     };
 
-    public Notes(int index, String title) {
-        this.index = index;
-        this.title = title;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -50,6 +51,10 @@ public class Notes implements Parcelable {
         return dateOfCreate;
     }
 
+    public int getIndex() {
+        return index;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -60,5 +65,6 @@ public class Notes implements Parcelable {
         dest.writeString(getTitle());
         dest.writeString(getDescription());
         dest.writeString(getDateOfCreate());
+        dest.writeInt(getIndex());
     }
 }
