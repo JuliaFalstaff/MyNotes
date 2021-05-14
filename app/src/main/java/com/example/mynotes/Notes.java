@@ -20,7 +20,6 @@ public class Notes implements Parcelable {
         this.title = title;
     }
 
-
     protected Notes(Parcel in) {
         title = in.readString();
         description = in.readString();
