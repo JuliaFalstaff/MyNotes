@@ -19,8 +19,7 @@ public class NotesFragment extends Fragment {
 
     private boolean isLandscape;
     public static final String CURRENT_NOTE = "CurrentNote";
-    private static final int DEFAULT_VALUE = 0;
-    private int currentPosition = DEFAULT_VALUE;
+    private int currentPosition = 0;
 
     public NotesFragment() {
     }
@@ -40,8 +39,8 @@ public class NotesFragment extends Fragment {
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
-        outState.putInt(CURRENT_NOTE, currentPosition);
         super.onSaveInstanceState(outState);
+        outState.putInt(CURRENT_NOTE, currentPosition);
     }
 
     @Override
@@ -49,10 +48,10 @@ public class NotesFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         isLandscape = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
         if (savedInstanceState != null) {
-            currentPosition = savedInstanceState.getInt(CURRENT_NOTE, DEFAULT_VALUE);
+            currentPosition = savedInstanceState.getInt(CURRENT_NOTE, DescriptionFragment.DEFAULT_INDEX);
         }
         if (isLandscape) {
-            showDescription(DescriptionFragment.DEFAULT_INDEX);
+            showDescription(currentPosition);
         }
     }
 
@@ -69,8 +68,8 @@ public class NotesFragment extends Fragment {
             textView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    showDescription(currentIndex);
                     currentPosition = currentIndex;
-                    showDescription(currentPosition);
                 }
             });
         }
