@@ -4,6 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -38,14 +41,15 @@ public class DescriptionActivity extends AppCompatActivity {
         int id = item.getItemId();
         switch (id) {
             case R.id.action_favorite:
-                Toast.makeText(DescriptionActivity.this, getString(R.string.menu_favorite), Toast.LENGTH_SHORT).show();
+                addFragment(new FavouriteFragment());
+//                Toast.makeText(DescriptionActivity.this, getString(R.string.menu_favorite), Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.action_checkbox:
                 Toast.makeText(DescriptionActivity.this, getString(R.string.menu_checkbox), Toast.LENGTH_SHORT).show();
             case R.id.action_settings:
                 Toast.makeText(DescriptionActivity.this, getString(R.string.menu_settings), Toast.LENGTH_SHORT).show();
         }
-        return super.onOptionsItemSelected(item);
+            return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -71,5 +75,14 @@ public class DescriptionActivity extends AppCompatActivity {
     private void initToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+    }
+
+    private void addFragment(Fragment fragment){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.remove(fragment);
+        fragmentTransaction.replace(R.id.fragment_container, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 }
