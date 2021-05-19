@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="textSize">36sp</dimen>
+    <dimen name="text_size">36sp</dimen>
     <dimen name="navigation_header_height">200dp</dimen>
-    <dimen name="nav_header_dimen">42sp</dimen>
+    <dimen name="nav_header_dimen">36sp</dimen>
+    <dimen name="email_size">24sp</dimen>
 </resources>

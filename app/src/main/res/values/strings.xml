@@ -19,4 +19,6 @@
     <string name="fragment_navigation">Navigation</string>
     <string name="menu_download">Download</string>
     <string name="menu_share">Share</string>
+    <string name="name">Name</string>
+    <string name="email">test@gmail.com</string>
 </resources>
