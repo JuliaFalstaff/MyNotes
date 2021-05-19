@@ -4,4 +4,19 @@
     <string name="description2">Description of your second note</string>
     <string name="description3">Description of your third note</string>
     <string name="description4">Description of your fourth note</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_favorite">Favourite</string>
+    <string name="menu_checkbox">Checkbox</string>
+    <string name="favourite_fragment">Favourite fragment</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="button_favourite">ButtonFavourite</string>
+    <string name="menu_delete">Delete</string>
+    <string name="title">Title</string>
+    <string name="navigation_drawer_open">open</string>
+    <string name="navigation_drawer_close">close</string>
+    <string name="menu_about">About App</string>
+    <string name="fragment_navigation">Navigation</string>
+    <string name="menu_download">Download</string>
+    <string name="menu_share">Share</string>
 </resources>

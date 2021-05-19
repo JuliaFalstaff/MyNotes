@@ -75,10 +75,6 @@ public class NotesFragment extends Fragment {
 //                    currentPosition = currentIndex;
                     currentNotes = new Notes(currentIndex, getResources().getStringArray(R.array.notes)[currentIndex]);
                     showDescription(currentNotes);
-
-
-
-
                 }
             });
         }
