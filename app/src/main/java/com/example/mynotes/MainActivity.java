@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-                if (navigateFragment(id)){
+                if (navigateFragment(id)) {
                     drawer.closeDrawer(GravityCompat.START);
                     return true;
                 }
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-        @Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         MenuItem search = menu.findItem(R.id.action_search);
@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, query, Toast.LENGTH_SHORT).show();
                 return true;
             }
+
             @Override
             public boolean onQueryTextChange(String newText) {
                 return true;
@@ -91,8 +92,8 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    private boolean navigateFragment (int id) {
-    switch (id) {
+    private boolean navigateFragment(int id) {
+        switch (id) {
             case R.id.action_favorite:
                 Toast.makeText(MainActivity.this, getString(R.string.menu_favorite), Toast.LENGTH_SHORT).show();
                 return true;
@@ -110,7 +111,4 @@ public class MainActivity extends AppCompatActivity {
         }
         return false;
     }
-
-
-
 }

@@ -59,6 +59,7 @@ public class DescriptionActivity extends AppCompatActivity {
                 Toast.makeText(DescriptionActivity.this, query, Toast.LENGTH_SHORT).show();
                 return true;
             }
+
             @Override
             public boolean onQueryTextChange(String newText) {
                 return true;
@@ -71,5 +72,4 @@ public class DescriptionActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }
-
 }

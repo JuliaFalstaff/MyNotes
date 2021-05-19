@@ -19,7 +19,6 @@ public class NotesFragment extends Fragment {
 
     private boolean isLandscape;
     public static final String CURRENT_NOTE = "CurrentNotes";
-//    private int currentPosition = 0;
     private Notes currentNotes;
 
     public NotesFragment() {
@@ -71,8 +70,6 @@ public class NotesFragment extends Fragment {
             textView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    showDescription(currentIndex);
-//                    currentPosition = currentIndex;
                     currentNotes = new Notes(currentIndex, getResources().getStringArray(R.array.notes)[currentIndex]);
                     showDescription(currentNotes);
                 }
