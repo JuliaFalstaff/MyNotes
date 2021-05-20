@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,6 +34,17 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         Toolbar toolbar = initToolbar();
         initDrawer(toolbar);
+        initFloatButton();
+    }
+
+    private void initFloatButton() {
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, getString(R.string.add), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void initDrawer(Toolbar toolbar) {
@@ -47,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
                 int id = item.getItemId();
                 if (navigateFragment(id)) {
                     drawer.closeDrawer(GravityCompat.START);
