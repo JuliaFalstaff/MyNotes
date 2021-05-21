@@ -7,10 +7,12 @@ import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.Menu;
@@ -22,6 +24,8 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.Arrays;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -29,13 +33,35 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
+//        if (savedInstanceState == null) {
+//            addFragment(new NotesFragment());
+//        }
+        if (savedInstanceState == null) {
+            NotesFragment notesFragment = new NotesFragment();
+            notesFragment.setArguments(getIntent().getExtras());
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.fragment_main_container, notesFragment)
+                    .commit();
+        }
     }
 
     private void initView() {
         Toolbar toolbar = initToolbar();
         initDrawer(toolbar);
         initFloatButton();
+//        initRecyclerView();
     }
+
+//    private void initRecyclerView() {
+//        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+//        recyclerView.setHasFixedSize(true);
+//        String[] notesList =getResources().getStringArray(R.array.notes);
+//
+//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+//        recyclerView.setLayoutManager(linearLayoutManager);
+//        recyclerView.setAdapter(new MyAdapter(Arrays.asList(notesList))); //обернули массив в лист (возможно наддо в NotesFragmnet по методичке)
+//    }
 
     private void initFloatButton() {
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -107,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean navigateFragment(int id) {
         switch (id) {
             case R.id.action_favorite:
-                Toast.makeText(MainActivity.this, getString(R.string.menu_favorite), Toast.LENGTH_SHORT).show();
+                addFragment(new FavouriteFragment());
                 return true;
             case R.id.action_checkbox:
                 Toast.makeText(MainActivity.this, getString(R.string.menu_checkbox), Toast.LENGTH_SHORT).show();
@@ -122,5 +148,14 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, getString(R.string.menu_delete), Toast.LENGTH_SHORT).show();
         }
         return false;
+    }
+
+    private void addFragment(Fragment fragment){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.remove(fragment);
+        fragmentTransaction.replace(R.id.fragment_main_container, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 }

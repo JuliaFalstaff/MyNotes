@@ -8,11 +8,22 @@
     tools:showIn="@layout/activity_main"
     tools:context=".MainActivity">
 
-    <fragment
-        android:id="@+id/notes"
-        android:name="com.example.mynotes.NotesFragment"
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/recyclerView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        tools:listitem="@layout/item"/>-->
+
+    <FrameLayout
+        android:id="@+id/fragment_main_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
+
+<!--    <fragment-->
+<!--        android:id="@+id/notes"-->
+<!--        android:name="com.example.mynotes.NotesFragment"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
 
 
 

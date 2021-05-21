@@ -1,9 +1,14 @@
 <resources>
     <string name="app_name">My Notes</string>
-    <string name="description1">Description of your first  note</string>
-    <string name="description2">Description of your second note</string>
-    <string name="description3">Description of your third note</string>
-    <string name="description4">Description of your fourth note</string>
+    <string name="description1">Description of your 1  note</string>
+    <string name="description2">Description of your 2 note</string>
+    <string name="description3">Description of your 3 note</string>
+    <string name="description4">Description of your 4 note</string>
+    <string name="description5">Description of your 5 note</string>
+    <string name="description6">Description of your 6 note</string>
+    <string name="description7">Description of your 7 note</string>
+    <string name="description8">Description of your 8 note</string>
+    <string name="description9">Description of your 9 note</string>
     <string name="menu_search">Search</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_favorite">Favourite</string>
@@ -22,4 +27,5 @@
     <string name="name">Name</string>
     <string name="email">test@gmail.com</string>
     <string name="add">Add a new note here</string>
+    <string name="item">Item</string>
 </resources>

@@ -5,6 +5,11 @@
         <item>Second Note</item>
         <item>Third Note</item>
         <item>Fourth Note</item>
+        <item>Five Note</item>
+        <item>Six Note</item>
+        <item>Seven Note</item>
+        <item>Eight Note</item>
+        <item>Nine Note</item>
     </string-array>
 
     <string-array name="descriptions">
@@ -12,5 +17,22 @@
         <item>@string/description2</item>
         <item>@string/description3</item>
         <item>@string/description4</item>
+        <item>@string/description5</item>
+        <item>@string/description6</item>
+        <item>@string/description7</item>
+        <item>@string/description8</item>
+        <item>@string/description9</item>
+    </string-array>
+
+    <string-array name="pictures">
+        <item>@drawable/lynch</item>
+        <item>@drawable/tarantino</item>
+        <item>@drawable/woody_allen</item>
+        <item>@drawable/andrei_tarkovsky</item>
+        <item>@drawable/jim_jarmusch</item>
+        <item>@drawable/coppolla</item>
+        <item>@drawable/fellinni</item>
+        <item>@drawable/stanley_kubrick</item>
+        <item>@drawable/kar_wai</item>
     </string-array>
 </resources>
