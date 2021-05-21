@@ -23,4 +23,15 @@
 
     <include layout="@layout/content_main"/>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:src="@drawable/ic_fab"
+        android:contentDescription="@string/add"
+        app:fabCustomSize="@dimen/fab_size"
+        app:maxImageSize="@dimen/image_size"
+        android:layout_margin="@dimen/layout_margin" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
