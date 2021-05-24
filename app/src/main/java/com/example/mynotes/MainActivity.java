@@ -10,23 +10,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-
-import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = "FloatButton";
@@ -37,11 +29,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initView();
         if (savedInstanceState == null) {
-            NotesFragment notesFragment = new NotesFragment();
-            notesFragment.setArguments(getIntent().getExtras());
+            NoteFragment noteFragment = new NoteFragment();
+            noteFragment.setArguments(getIntent().getExtras());
             getSupportFragmentManager()
                     .beginTransaction()
-                    .add(R.id.fragment_main_container, notesFragment)
+                    .add(R.id.fragment_main_container, noteFragment)
                     .commit();
         }
     }

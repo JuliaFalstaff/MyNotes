@@ -16,15 +16,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class NotesFragment extends Fragment {
+public class NoteFragment extends Fragment {
 
     private boolean isLandscape;
     public static final String CURRENT_NOTE = "CurrentNotes";
     private Note currentNote;
 
-    public NotesFragment() {
+    public NoteFragment() {
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater,
