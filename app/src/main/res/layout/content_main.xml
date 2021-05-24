@@ -10,12 +10,9 @@
 
     <fragment
         android:id="@+id/notes"
-        android:name="com.example.mynotes.NotesFragment"
+        android:name="com.example.mynotes.NoteFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-
-
-
 </LinearLayout>
 
 

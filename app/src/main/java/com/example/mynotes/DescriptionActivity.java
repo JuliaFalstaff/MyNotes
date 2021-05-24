@@ -42,7 +42,6 @@ public class DescriptionActivity extends AppCompatActivity {
         switch (id) {
             case R.id.action_favorite:
                 addFragment(new FavouriteFragment());
-//                Toast.makeText(DescriptionActivity.this, getString(R.string.menu_favorite), Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.action_checkbox:
                 Toast.makeText(DescriptionActivity.this, getString(R.string.menu_checkbox), Toast.LENGTH_SHORT).show();

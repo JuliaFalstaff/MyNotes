@@ -15,13 +15,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-public class NotesFragment extends Fragment {
+public class NoteFragment extends Fragment {
 
     private boolean isLandscape;
     public static final String CURRENT_NOTE = "CurrentNotes";
-    private Notes currentNotes;
+    private Note currentNote;
 
-    public NotesFragment() {
+    public NoteFragment() {
     }
 
     @Override
@@ -40,7 +40,7 @@ public class NotesFragment extends Fragment {
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putParcelable(CURRENT_NOTE, currentNotes);
+        outState.putParcelable(CURRENT_NOTE, currentNote);
     }
 
     @Override
@@ -48,12 +48,12 @@ public class NotesFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         isLandscape = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
         if (savedInstanceState != null) {
-            currentNotes = savedInstanceState.getParcelable(CURRENT_NOTE);
+            currentNote = savedInstanceState.getParcelable(CURRENT_NOTE);
         } else {
-            currentNotes = new Notes(0, getResources().getStringArray(R.array.notes)[0]);
+            currentNote = new Note(0, getResources().getStringArray(R.array.notes)[0]);
         }
         if (isLandscape) {
-            showDescription(currentNotes);
+            showDescription(currentNote);
         }
     }
 
@@ -70,14 +70,14 @@ public class NotesFragment extends Fragment {
             textView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    currentNotes = new Notes(currentIndex, getResources().getStringArray(R.array.notes)[currentIndex]);
-                    showDescription(currentNotes);
+                    currentNote = new Note(currentIndex, getResources().getStringArray(R.array.notes)[currentIndex]);
+                    showDescription(currentNote);
                 }
             });
         }
     }
 
-    void showDescription(Notes currentNotes) {
+    private void showDescription(Note currentNotes) {
         if (isLandscape) {
             showLandscapeDescription(currentNotes);
         } else {
@@ -85,7 +85,7 @@ public class NotesFragment extends Fragment {
         }
     }
 
-    private void showLandscapeDescription(Notes currentNotes) {
+    private void showLandscapeDescription(Note currentNotes) {
         DescriptionFragment descriptionFragment = DescriptionFragment.newInstance(currentNotes);
         requireActivity().getSupportFragmentManager()
                 .beginTransaction()
@@ -93,7 +93,7 @@ public class NotesFragment extends Fragment {
                 .commit();
     }
 
-    void showPortraitDescription(Notes currentNotes) {
+    private void showPortraitDescription(Note currentNotes) {
         Intent intent = new Intent();
         intent.setClass(getActivity(), DescriptionActivity.class);
         intent.putExtra(DescriptionFragment.INDEX, currentNotes);
