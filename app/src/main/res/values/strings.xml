@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">My Notes</string>
+    <string name="description1">Description of your first  note</string>
+    <string name="description2">Description of your second note</string>
+    <string name="description3">Description of your third note</string>
+    <string name="description4">Description of your fourth note</string>
 </resources>
