@@ -3,28 +3,31 @@ package com.example.mynotes;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Notes implements Parcelable {
+public class Note implements Parcelable {
     private String title;
+    private String subTitle;
     private String description;
     private String dateOfCreate;
     private int indexOfDescription;
+    private int picture;
 
-    public Notes(String title, String description, String dateOfCreate) {
+    public Note(String title, String subTitle, int picture) {
         this.title = title;
-        this.description = description;
-        this.dateOfCreate = dateOfCreate;
+        this.subTitle = subTitle;
+        this.picture = picture;
     }
 
-    public Notes(int indexOfDescription, String title) {
+    public Note(int indexOfDescription, String title) {
         this.indexOfDescription = indexOfDescription;
         this.title = title;
     }
 
-    protected Notes(Parcel in) {
+    protected Note(Parcel in) {
         title = in.readString();
         description = in.readString();
         dateOfCreate = in.readString();
         indexOfDescription = in.readInt();
+        subTitle = in.readString();
     }
 
     @Override
@@ -33,6 +36,7 @@ public class Notes implements Parcelable {
         dest.writeString(description);
         dest.writeString(dateOfCreate);
         dest.writeInt(indexOfDescription);
+        dest.writeString(subTitle);
     }
 
     @Override
@@ -40,15 +44,15 @@ public class Notes implements Parcelable {
         return 0;
     }
 
-    public static final Creator<Notes> CREATOR = new Creator<Notes>() {
+    public static final Creator<Note> CREATOR = new Creator<Note>() {
         @Override
-        public Notes createFromParcel(Parcel in) {
-            return new Notes(in);
+        public Note createFromParcel(Parcel in) {
+            return new Note(in);
         }
 
         @Override
-        public Notes[] newArray(int size) {
-            return new Notes[size];
+        public Note[] newArray(int size) {
+            return new Note[size];
         }
     };
 
@@ -62,6 +66,14 @@ public class Notes implements Parcelable {
 
     public String getDateOfCreate() {
         return dateOfCreate;
+    }
+
+    public String getSubTitle() {
+        return subTitle;
+    }
+
+    public int getPicture() {
+        return picture;
     }
 
     public int getIndexOfDescription() {

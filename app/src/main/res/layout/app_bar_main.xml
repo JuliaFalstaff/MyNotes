@@ -35,6 +35,4 @@
         app:fabCustomSize="@dimen/fab_size"
         app:maxImageSize="@dimen/image_size"
         android:layout_margin="@dimen/layout_margin" />
-
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -14,18 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.Arrays;
 
 
 public class NotesFragment extends Fragment {
 
     private boolean isLandscape;
     public static final String CURRENT_NOTE = "CurrentNotes";
-    private Notes currentNotes;
+    private Note currentNote;
 
     public NotesFragment() {
     }
@@ -35,7 +30,6 @@ public class NotesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
-//        return inflater.inflate(R.layout.fragment_notes, container, false);
         View view = inflater.inflate(R.layout.fragment_notes, container,false);
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         String[] notesList = getResources().getStringArray(R.array.notes);
@@ -46,13 +40,12 @@ public class NotesFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        initList(view);
     }
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putParcelable(CURRENT_NOTE, currentNotes);
+        outState.putParcelable(CURRENT_NOTE, currentNote);
     }
 
     @Override
@@ -60,38 +53,16 @@ public class NotesFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         isLandscape = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
         if (savedInstanceState != null) {
-            currentNotes = savedInstanceState.getParcelable(CURRENT_NOTE);
+            currentNote = savedInstanceState.getParcelable(CURRENT_NOTE);
         } else {
-            currentNotes = new Notes(0, getResources().getStringArray(R.array.notes)[0]);
+            currentNote = new Note(0, getResources().getStringArray(R.array.notes)[0]);
         }
         if (isLandscape) {
-            showDescription(currentNotes);
+            showDescription(currentNote);
         }
     }
 
-//    private void initList(View view) {
-//        LinearLayout linearLayout = (LinearLayout) view;
-//        String[] notes = getResources().getStringArray(R.array.notes);
-//        LayoutInflater ltInflater = getLayoutInflater();
-//
-//        for (int i = 0; i < notes.length; i++) {
-//            String note = notes[i];
-//            View item = ltInflater.inflate(R.layout.item, linearLayout, false);
-//            TextView textView = item.findViewById(R.id.textViewList);
-//            textView.setText(note);
-//            linearLayout.addView(item);
-//            final int currentIndex = i;
-//            textView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    currentNotes = new Notes(currentIndex, getResources().getStringArray(R.array.notes)[currentIndex]);
-//                    showDescription(currentNotes);
-//                }
-//            });
-//        }
-//    }
-
-    void showDescription(Notes currentNotes) {
+    private void showDescription(Note currentNotes) {
         if (isLandscape) {
             showLandscapeDescription(currentNotes);
         } else {
@@ -99,7 +70,7 @@ public class NotesFragment extends Fragment {
         }
     }
 
-    private void showLandscapeDescription(Notes currentNotes) {
+    private void showLandscapeDescription(Note currentNotes) {
         DescriptionFragment descriptionFragment = DescriptionFragment.newInstance(currentNotes);
         requireActivity().getSupportFragmentManager()
                 .beginTransaction()
@@ -107,7 +78,7 @@ public class NotesFragment extends Fragment {
                 .commit();
     }
 
-    void showPortraitDescription(Notes currentNotes) {
+    private void showPortraitDescription(Note currentNotes) {
         Intent intent = new Intent();
         intent.setClass(getActivity(), DescriptionActivity.class);
         intent.putExtra(DescriptionFragment.INDEX, currentNotes);
@@ -118,16 +89,18 @@ public class NotesFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
-        MyAdapter adapter = new MyAdapter(new CardSourceImpl(getResources()).init());
+        MyAdapter adapter = new MyAdapter(new CardNoteSourceImpl(getResources()).init());
         recyclerView.setAdapter(adapter);
+
         DividerItemDecoration itemDecoration = new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL);
         itemDecoration.setDrawable(getResources().getDrawable(R.drawable.separator, null));
         recyclerView.addItemDecoration(itemDecoration);
+
         adapter.setOnItemClickListener(new MyAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                    currentNotes = new Notes(position, getResources().getStringArray(R.array.notes)[position]);
-                    showDescription(currentNotes);
+                    currentNote = new Note(position, getResources().getStringArray(R.array.notes)[position]);
+                    showDescription(currentNote);
             }
         });
     }

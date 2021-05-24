@@ -10,16 +10,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
-
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     public static final String TAG = "MyAdapter";
-    private CardSource cardSource;
+    private CardNoteSource cardNoteSource;
     private OnItemClickListener onItemClickListener;
 
-    public MyAdapter(CardSource cardSource) {
-        this.cardSource = cardSource;
+    public MyAdapter(CardNoteSource cardNoteSource) {
+        this.cardNoteSource = cardNoteSource;
         Log.d(TAG, "Constructor My Adapter");
     }
 
@@ -27,42 +25,50 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
-        Log.d(TAG, "onCreatViewHolder");
+        Log.d(TAG, "onCreateViewHolder");
         return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.bind(cardSource.getCardData(position));
+        holder.bind(cardNoteSource.getCardNote(position));
         Log.d(TAG, "onBindViewHolder" + position);
     }
 
     @Override
     public int getItemCount() {
-        return cardSource.size();
+        return cardNoteSource.size();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
         private TextView title;
-        private TextView description;
+        private TextView subTitle;
         private TextView textViewHolder;
         private ImageView image;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.titleOfNotes);
-            description = itemView.findViewById(R.id.descriptionOfNote);
+            subTitle = itemView.findViewById(R.id.subTitlesOfNote);
             image = itemView.findViewById(R.id.imageOfNotes);
         }
 
+        void bind(Note cardNotes) {
+            title.setText(cardNotes.getTitle());
+            subTitle.setText(cardNotes.getSubTitle());
+            image.setImageResource(cardNotes.getPicture());
 
-        void bind(CardData cardData) {
-            title.setText(cardData.getTitle());
-            description.setText(cardData.getDescription());
-            image.setImageResource(cardData.getPicture());
-
+            //Обработка нажатия - решила сделать возможноть открытия Description при нажатии и на картинку и на Title.
             image.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onItemClickListener != null) {
+                        onItemClickListener.onItemClick(getAdapterPosition());
+                    }
+                }
+            });
+            title.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (onItemClickListener != null) {

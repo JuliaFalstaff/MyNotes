@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="notes">
-        <item>First Note</item>
-        <item>Second Note</item>
-        <item>Third Note</item>
-        <item>Fourth Note</item>
-        <item>Five Note</item>
-        <item>Six Note</item>
-        <item>Seven Note</item>
-        <item>Eight Note</item>
-        <item>Nine Note</item>
+        <item>Режиссер Дэвид Линч</item>
+        <item>Режиссер Квентин Тарантино</item>
+        <item>Режиссер Вуди Аллен</item>
+        <item>Режиссер Андрей Тарковский</item>
+        <item>Режиссер Джим Джармуш</item>
+        <item>Режиссер Фрэнсис Форд Коппола</item>
+        <item>Режиссер Федерико Феллини</item>
+        <item>Режиссер Стэнли Кубрик</item>
+        <item>Режиссер Вонг Кар-Вай</item>
     </string-array>
 
     <string-array name="descriptions">
@@ -35,4 +35,18 @@
         <item>@drawable/stanley_kubrick</item>
         <item>@drawable/kar_wai</item>
     </string-array>
+
+    <string-array name="subTitles">
+        <item>@string/subTitles1</item>
+        <item>@string/subTitles2</item>
+        <item>@string/subTitles3</item>
+        <item>@string/subTitles4</item>
+        <item>@string/subTitles5</item>
+        <item>@string/subTitles6</item>
+        <item>@string/subTitles7</item>
+        <item>@string/subTitles8</item>
+        <item>@string/subTitles9</item>
+    </string-array>
+
+
 </resources>

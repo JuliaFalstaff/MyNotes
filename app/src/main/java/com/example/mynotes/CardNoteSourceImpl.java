@@ -6,24 +6,24 @@ import android.content.res.TypedArray;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CardSourceImpl implements CardSource {
-    private List<CardData> list;
+public class CardNoteSourceImpl implements CardNoteSource {
+    private List<Note> list;
     private Resources resources;
 
-    public CardSourceImpl(Resources resources) {
+    public CardNoteSourceImpl(Resources resources) {
         list = new ArrayList<>();
         this.resources = resources;
     }
 
-    public CardSourceImpl init() {
+    public CardNoteSourceImpl init() {
         String[] title = resources.getStringArray(R.array.notes);
-        String[] description = resources.getStringArray(R.array.descriptions);
+        String[] subTitle = resources.getStringArray(R.array.subTitles);
         int[] pictures = getImageArray();
 
-        for (int i = 0; i < description.length; i++) {
-            list.add(new CardData(
+        for (int i = 0; i < subTitle.length; i++) {
+            list.add(new Note(
                     title[i],
-                    description[i],
+                    subTitle[i],
                     pictures[i]
             ));
         }
@@ -40,7 +40,7 @@ public class CardSourceImpl implements CardSource {
     }
 
     @Override
-    public CardData getCardData(int position) {
+    public Note getCardNote(int position) {
         return list.get(position);
     }
 

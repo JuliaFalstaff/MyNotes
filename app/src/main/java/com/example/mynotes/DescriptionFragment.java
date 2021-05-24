@@ -19,12 +19,12 @@ public class DescriptionFragment extends Fragment {
 
     public static final String INDEX = "INDEX";
     public static final int DEFAULT_INDEX = 0;
-    private Notes notes;
+    private Note notes;
 
     public DescriptionFragment() {
     }
 
-    public static DescriptionFragment newInstance(Notes notes) {
+    public static DescriptionFragment newInstance(Note notes) {
         DescriptionFragment fragment = new DescriptionFragment();
         Bundle args = new Bundle();
         args.putParcelable(INDEX, notes);

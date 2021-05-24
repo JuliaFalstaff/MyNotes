@@ -13,8 +13,10 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,15 +29,13 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
+    public static final String TAG = "FloatButton";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-//        if (savedInstanceState == null) {
-//            addFragment(new NotesFragment());
-//        }
         if (savedInstanceState == null) {
             NotesFragment notesFragment = new NotesFragment();
             notesFragment.setArguments(getIntent().getExtras());
@@ -50,18 +50,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = initToolbar();
         initDrawer(toolbar);
         initFloatButton();
-//        initRecyclerView();
     }
-
-//    private void initRecyclerView() {
-//        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-//        recyclerView.setHasFixedSize(true);
-//        String[] notesList =getResources().getStringArray(R.array.notes);
-//
-//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-//        recyclerView.setLayoutManager(linearLayoutManager);
-//        recyclerView.setAdapter(new MyAdapter(Arrays.asList(notesList))); //обернули массив в лист (возможно наддо в NotesFragmnet по методичке)
-//    }
 
     private void initFloatButton() {
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -69,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, getString(R.string.add), Toast.LENGTH_SHORT).show();
+//                addFragment(new DescriptionFragment());
+//                Log.d(TAG, "click on FAB");
             }
         });
     }

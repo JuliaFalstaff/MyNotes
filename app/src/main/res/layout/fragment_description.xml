@@ -13,7 +13,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
+        android:textSize="@dimen/title_size"
         android:text="@string/title" />
 
     <TextView
@@ -23,5 +23,3 @@
         android:text="@string/description1"
         android:textSize="@dimen/text_size" />
 </LinearLayout>
-
-<!--    android:background="@color/purple_200"-->
