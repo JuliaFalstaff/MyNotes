@@ -1,7 +1,62 @@
 <resources>
     <string name="app_name">My Notes</string>
-    <string name="description1">Description of your first  note</string>
-    <string name="description2">Description of your second note</string>
-    <string name="description3">Description of your third note</string>
-    <string name="description4">Description of your fourth note</string>
+    <string name="description1">Американский кинорежиссёр, сценарист, художник, музыкант, фотограф и актёр.
+        Является представителем американского независимого кинематографа.Британская газета The Guardian назвала его «самым важным кинорежиссёром нынешней эпохи».
+        Известные фильмы: Твин пикс, Малхоллад Драйв, Человек-Слон, Шоссе вникуда, Простая История, Синий бархат</string>
+    <string name="description2">Американский кинорежиссёр, сценарист, актёр, кинопродюсер и кинооператор.
+        Один из наиболее ярких представителей постмодернизма в кинематографе.
+        Известные фильмы: Криминальное чтиво, Убить Билла, Джанго освобожденный, Бешеные псы, Омерзительная восьмерка</string>
+    <string name="description3">Американский кинорежиссёр, актёр-комик, продюсер, четырёхкратный обладатель премии «Оскар», писатель,
+        автор многочисленных рассказов и пьес. Аллен заслужил любовь публики своими остроумными комедиями, содержащими элементы абсурда и сатиры,
+        а также психологическими драмами, созданными не без влияния творчества Ингмара Бергмана.
+        На стыке этих двух жанров, как считается, Аллен создал новый жанр — «интеллектуальную комедию».
+        Известные фильмы: Любовь и смерть, Зелиг, Манхэттен, Энни Холл, Сыграй это еще раз, Сэм!</string>
+    <string name="description4">Советский режиссёр театра и кино, сценарист. Его фильмы образуют цикл о страданиях и надеждах человека,
+        взявшего на себя бремя нравственной ответственности за весь мир. Концептуальные и художественные решения Тарковского
+        отличаются оригинальностью и глубиной.
+        Известные фильмы: Андрей Рублев, Сталкер, Зеркало, Иваново детство, Ностальгия</string>
+    <string name="description5">Американский кинорежиссёр, сценарист и музыкант. Один из главных представителей американского независимого кинематографа.
+        Неоднократный призёр Каннского кинофестиваля.
+        Известные фильмы: Ночь на Земле, Вне закона, Мертвец, Пес-призрак: Путь самурая, Более странно, чем в раю</string>
+    <string name="description6">Американский кинорежиссёр, сценарист и продюсер.
+        Известные фильмы: Крестный отец, Кояанискатси, Апокалипсис сегодня</string>
+    <string name="description7">Итальянский кинорежиссёр и сценарист. Обладатель пяти премий «Оскар» и «Золотой пальмовой ветви»
+        Каннского кинофестиваля.
+        Известные фильмы: Дорога, Ночи Кабирии, 8 с половиной, Сладкая жизнь, Амаркорд</string>
+    <string name="description8">Британский и американский кинорежиссёр, сценарист, кинопродюсер, кинооператор и фотограф, один из самых
+        влиятельных кинематографистов второй половины XX века. Фильмы Кубрика, в основном экранизации, сняты с большим техническим мастерством.
+        К особенностям его режиссёрского почерка относят специфическое использование крупных планов, необычного панорамирования, наплыва, а также
+        непривычное употребление популярной и классической музыки.
+        Известные фильмы: Тропы славы, Сияние, Доктор Стрейнджлав, Цельнометаллическая оболочка, Барри Линдон, 2001 год: Космическая одиссея, Заводной апельсин</string>
+    <string name="description9">Режиссёр гонконгской Новой волны, известный своим поэтическим киноязыком.Фильмы Вонга часто рассказывают о романтиках, ищущих любовь
+        в скоротечности жизни. Их истории показаны через размытые, опьяненные сцены, содержащие насыщенные образы.
+        Известные фильмы: Любовное настроение, Чунгкингский экспресс, Падшие ангелы, 2046, Счастливы вместе, Мои черничные ночи.</string>
+    <string name="subTitles1">Фильмография Дэвида Линча</string>
+    <string name="subTitles2">Фильмография Квентина Тарантино</string>
+    <string name="subTitles3">Фильмография Вуди Аллена</string>
+    <string name="subTitles4">Фильмография Андрея Тарковского</string>
+    <string name="subTitles5">Фильмография Джима Джармуша</string>
+    <string name="subTitles6">Фильмография Фрэнсиса Форда Копполы</string>
+    <string name="subTitles7">Фильмография Федерико Феллини</string>
+    <string name="subTitles8">Фильмография Стэнли Кубрика</string>
+    <string name="subTitles9">Фильмография Вонга Кар-Вая</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_favorite">Favourite</string>
+    <string name="menu_checkbox">Checkbox</string>
+    <string name="favourite_fragment">Favourite fragment</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="button_favourite">ButtonFavourite</string>
+    <string name="menu_delete">Delete</string>
+    <string name="title">Title</string>
+    <string name="navigation_drawer_open">open</string>
+    <string name="navigation_drawer_close">close</string>
+    <string name="menu_about">About App</string>
+    <string name="fragment_navigation">Navigation</string>
+    <string name="menu_download">Download</string>
+    <string name="menu_share">Share</string>
+    <string name="name">Name</string>
+    <string name="email">test@gmail.com</string>
+    <string name="add">Add a new note here</string>
+    <string name="item">Item</string>
 </resources>

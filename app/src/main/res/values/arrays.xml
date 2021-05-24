@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="notes">
-        <item>First Note</item>
-        <item>Second Note</item>
-        <item>Third Note</item>
-        <item>Fourth Note</item>
+        <item>Режиссер Дэвид Линч</item>
+        <item>Режиссер Квентин Тарантино</item>
+        <item>Режиссер Вуди Аллен</item>
+        <item>Режиссер Андрей Тарковский</item>
+        <item>Режиссер Джим Джармуш</item>
+        <item>Режиссер Фрэнсис Форд Коппола</item>
+        <item>Режиссер Федерико Феллини</item>
+        <item>Режиссер Стэнли Кубрик</item>
+        <item>Режиссер Вонг Кар-Вай</item>
     </string-array>
 
     <string-array name="descriptions">
@@ -12,5 +17,36 @@
         <item>@string/description2</item>
         <item>@string/description3</item>
         <item>@string/description4</item>
+        <item>@string/description5</item>
+        <item>@string/description6</item>
+        <item>@string/description7</item>
+        <item>@string/description8</item>
+        <item>@string/description9</item>
     </string-array>
+
+    <string-array name="pictures">
+        <item>@drawable/lynch</item>
+        <item>@drawable/tarantino</item>
+        <item>@drawable/woody_allen</item>
+        <item>@drawable/andrei_tarkovsky</item>
+        <item>@drawable/jim_jarmusch</item>
+        <item>@drawable/coppolla</item>
+        <item>@drawable/fellinni</item>
+        <item>@drawable/stanley_kubrick</item>
+        <item>@drawable/kar_wai</item>
+    </string-array>
+
+    <string-array name="subTitles">
+        <item>@string/subTitles1</item>
+        <item>@string/subTitles2</item>
+        <item>@string/subTitles3</item>
+        <item>@string/subTitles4</item>
+        <item>@string/subTitles5</item>
+        <item>@string/subTitles6</item>
+        <item>@string/subTitles7</item>
+        <item>@string/subTitles8</item>
+        <item>@string/subTitles9</item>
+    </string-array>
+
+
 </resources>
