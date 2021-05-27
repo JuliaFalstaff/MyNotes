@@ -3,14 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FavouriteFragment">
+    tools:context=".SettingsFragment">
 
     <TextView
         android:id="@+id/favouriteTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/favourite_fragment"
+        android:text="@string/settings_fragment"
         android:textColor="@color/main_black"
         android:textSize="@dimen/text_size" />
+
 </FrameLayout>

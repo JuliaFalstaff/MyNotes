@@ -42,14 +42,15 @@ public class DescriptionActivity extends AppCompatActivity {
         switch (id) {
             case R.id.action_favorite:
                 addFragment(new FavouriteFragment());
-//                Toast.makeText(DescriptionActivity.this, getString(R.string.menu_favorite), Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.action_checkbox:
                 Toast.makeText(DescriptionActivity.this, getString(R.string.menu_checkbox), Toast.LENGTH_SHORT).show();
             case R.id.action_settings:
-                Toast.makeText(DescriptionActivity.this, getString(R.string.menu_settings), Toast.LENGTH_SHORT).show();
+                addFragment(new SettingsFragment());
+            case R.id.action_edit:
+                addFragment(new EditNoteFragment());
         }
-            return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -77,7 +78,7 @@ public class DescriptionActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
     }
 
-    private void addFragment(Fragment fragment){
+    private void addFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.remove(fragment);

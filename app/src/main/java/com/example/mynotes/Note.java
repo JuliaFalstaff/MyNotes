@@ -3,11 +3,12 @@ package com.example.mynotes;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.Date;
+
 public class Note implements Parcelable {
     private String title;
     private String subTitle;
     private String description;
-    private String dateOfCreate;
     private int indexOfDescription;
     private int picture;
 
@@ -25,8 +26,6 @@ public class Note implements Parcelable {
     protected Note(Parcel in) {
         title = in.readString();
         description = in.readString();
-        dateOfCreate = in.readString();
-        indexOfDescription = in.readInt();
         subTitle = in.readString();
     }
 
@@ -34,8 +33,6 @@ public class Note implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(title);
         dest.writeString(description);
-        dest.writeString(dateOfCreate);
-        dest.writeInt(indexOfDescription);
         dest.writeString(subTitle);
     }
 
@@ -62,10 +59,6 @@ public class Note implements Parcelable {
 
     public String getDescription() {
         return description;
-    }
-
-    public String getDateOfCreate() {
-        return dateOfCreate;
     }
 
     public String getSubTitle() {

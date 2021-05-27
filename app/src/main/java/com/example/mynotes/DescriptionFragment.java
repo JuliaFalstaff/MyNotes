@@ -62,7 +62,7 @@ public class DescriptionFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.action_attach){
+        if (item.getItemId() == R.id.action_attach) {
             Toast.makeText(getContext(), "Attach something here", Toast.LENGTH_SHORT).show();
             return true;
         } else if (item.getItemId() == R.id.action_share) {

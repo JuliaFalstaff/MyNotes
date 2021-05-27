@@ -1,42 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginHorizontal="@dimen/layout_margin_horizontal"
     android:background="@color/mandarin"
     app:cardCornerRadius="@dimen/card_corner_radius"
-    android:layout_marginHorizontal="@dimen/layout_margin_horizontal"
     app:cardElevation="@dimen/card_elevation">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        
+
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageOfNotes"
             android:layout_width="match_parent"
             android:layout_height="@dimen/layout_height_image_view"
-            android:scaleType="fitCenter"
+            android:layout_weight="1"
             android:clickable="true"
-            android:src="@mipmap/ic_avatar"
-            android:layout_weight="1"/>
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_avatar" />
+
         <LinearLayout
 
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:paddingStart="@dimen/padding_start"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/padding_start">
 
             <TextView
                 android:id="@+id/titleOfNotes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start"
-                android:textStyle="bold"
-                android:textSize="@dimen/title_size" />
+                android:textSize="@dimen/title_size"
+                android:textStyle="bold" />
 
         </LinearLayout>
+
         <TextView
             android:id="@+id/subTitlesOfNote"
             android:layout_width="match_parent"
@@ -46,5 +49,6 @@
             android:paddingTop="@dimen/padding_top"
             android:paddingBottom="@dimen/padding_bottom"
             android:textSize="@dimen/email_size" />
-</LinearLayout>
+
+    </LinearLayout>
 </androidx.cardview.widget.CardView>

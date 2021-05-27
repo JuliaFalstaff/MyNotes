@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
+
         if (savedInstanceState == null) {
             NoteFragment noteFragment = new NoteFragment();
             noteFragment.setArguments(getIntent().getExtras());
@@ -49,9 +51,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, getString(R.string.add), Toast.LENGTH_SHORT).show();
-//                addFragment(new DescriptionFragment());
-//                Log.d(TAG, "click on FAB");
+                addFragment(new EditNoteFragment());
             }
         });
     }
@@ -81,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar initToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
         return toolbar;
     }
 
@@ -118,22 +120,17 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_favorite:
                 addFragment(new FavouriteFragment());
                 return true;
-            case R.id.action_checkbox:
-                Toast.makeText(MainActivity.this, getString(R.string.menu_checkbox), Toast.LENGTH_SHORT).show();
-                return true;
             case R.id.action_settings:
-                Toast.makeText(MainActivity.this, getString(R.string.menu_settings), Toast.LENGTH_SHORT).show();
+                addFragment(new SettingsFragment());
                 return true;
             case R.id.action_about:
-                Toast.makeText(MainActivity.this, getString(R.string.menu_about), Toast.LENGTH_SHORT).show();
+                addFragment(new AboutAppFragment());
                 return true;
-            case R.id.action_delete:
-                Toast.makeText(MainActivity.this, getString(R.string.menu_delete), Toast.LENGTH_SHORT).show();
         }
         return false;
     }
 
-    private void addFragment(Fragment fragment){
+    private void addFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.remove(fragment);

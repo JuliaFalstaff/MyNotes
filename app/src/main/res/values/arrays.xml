@@ -34,6 +34,7 @@
         <item>@drawable/fellinni</item>
         <item>@drawable/stanley_kubrick</item>
         <item>@drawable/kar_wai</item>
+        <item>@drawable/ic_avatar_foreground</item>
     </string-array>
 
     <string-array name="subTitles">

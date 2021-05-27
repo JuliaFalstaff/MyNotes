@@ -4,6 +4,7 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class CardNoteSourceImpl implements CardNoteSource {
@@ -32,9 +33,9 @@ public class CardNoteSourceImpl implements CardNoteSource {
 
     private int[] getImageArray() {
         TypedArray array = resources.obtainTypedArray(R.array.pictures);
-        int[] images  = new int[array.length()];
+        int[] images = new int[array.length()];
         for (int i = 0; i < array.length(); i++) {
-            images[i] = array.getResourceId(i,0);
+            images[i] = array.getResourceId(i, 0);
         }
         return images;
     }
@@ -48,4 +49,37 @@ public class CardNoteSourceImpl implements CardNoteSource {
     public int size() {
         return list.size();
     }
+
+    @Override
+    public void deleteNote(int position) {
+        list.remove(position);
+    }
+
+    @Override
+    public void updateNote(int position, Note note) {
+        list.set(position, note);
+
+    }
+
+    @Override
+    public int addNote(Note note) {
+        list.add(note);
+        return list.indexOf(note);
+    }
+
+    @Override
+    public void clearNote() {
+        list.clear();
+    }
+
+    @Override
+    public boolean moveNote(int position) {
+        if (position < list.size() - 1) {
+            Note note = list.remove(position);
+            list.add(position + 1, note);
+            return true;
+        }
+        return false;
+    }
 }
+

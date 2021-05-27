@@ -10,11 +10,11 @@
         android:icon="@android:drawable/btn_star_big_on"
         android:orderInCategory="20"
         android:title="@string/menu_favorite"/>
-    <item
-        android:id="@+id/action_delete"
-        android:icon="@drawable/ic_action_delete"
-        android:orderInCategory="20"
-        android:title="@string/menu_delete"/>
+<!--    <item-->
+<!--        android:id="@+id/action_delete"-->
+<!--        android:icon="@drawable/ic_action_delete"-->
+<!--        android:orderInCategory="20"-->
+<!--        android:title="@string/menu_delete"/>-->
 
     <item
         android:id="@+id/action_about"

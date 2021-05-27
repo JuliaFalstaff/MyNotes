@@ -8,17 +8,29 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.text.SimpleDateFormat;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     public static final String TAG = "MyAdapter";
     private CardNoteSource cardNoteSource;
     private OnItemClickListener onItemClickListener;
+    private int menuPosition;
+    private Fragment fragment;
 
     public MyAdapter(CardNoteSource cardNoteSource) {
         this.cardNoteSource = cardNoteSource;
         Log.d(TAG, "Constructor My Adapter");
+    }
+
+    public MyAdapter(CardNoteSource cardNoteSource, Fragment fragment) {
+        this.cardNoteSource = cardNoteSource;
+        this.fragment = fragment;
     }
 
     @NonNull
@@ -40,11 +52,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return cardNoteSource.size();
     }
 
+    public int getMenuPosition() {
+        return menuPosition;
+    }
+
     class MyViewHolder extends RecyclerView.ViewHolder {
 
         private TextView title;
         private TextView subTitle;
-        private TextView textViewHolder;
         private ImageView image;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -52,6 +67,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             title = itemView.findViewById(R.id.titleOfNotes);
             subTitle = itemView.findViewById(R.id.subTitlesOfNote);
             image = itemView.findViewById(R.id.imageOfNotes);
+
+            if (fragment != null) {
+                fragment.registerForContextMenu(itemView);
+            }
         }
 
         void bind(Note cardNotes) {
@@ -68,6 +87,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                     }
                 }
             });
+
+            image.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    menuPosition = getLayoutPosition();
+                    v.showContextMenu(10, 10);
+                    return true;
+                }
+            });
+
             title.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -77,6 +106,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 }
             });
         }
+
+        public TextView getTitle() {
+            return title;
+        }
+
+        public TextView getSubTitle() {
+            return subTitle;
+        }
+
+        public ImageView getImage() {
+            return image;
+        }
+
     }
 
     interface OnItemClickListener {
