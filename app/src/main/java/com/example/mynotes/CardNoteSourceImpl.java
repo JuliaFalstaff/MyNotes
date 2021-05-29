@@ -16,7 +16,7 @@ public class CardNoteSourceImpl implements CardNoteSource {
         this.resources = resources;
     }
 
-    public CardNoteSourceImpl init() {
+    public CardNoteSourceImpl init(CardNoteSourceResponse cardNoteSourceResponse) {
         String[] title = resources.getStringArray(R.array.notes);
         String[] subTitle = resources.getStringArray(R.array.subTitles);
         int[] pictures = getImageArray();
@@ -28,6 +28,10 @@ public class CardNoteSourceImpl implements CardNoteSource {
                     pictures[i]
             ));
         }
+        if (cardNoteSourceResponse != null) {
+            cardNoteSourceResponse.initialized(this);
+        }
+
         return this;
     }
 
@@ -62,24 +66,23 @@ public class CardNoteSourceImpl implements CardNoteSource {
     }
 
     @Override
-    public int addNote(Note note) {
+    public void addNote(Note note) {
         list.add(note);
-        return list.indexOf(note);
     }
 
     @Override
     public void clearNote() {
         list.clear();
     }
-
-    @Override
-    public boolean moveNote(int position) {
-        if (position < list.size() - 1) {
-            Note note = list.remove(position);
-            list.add(position + 1, note);
-            return true;
-        }
-        return false;
-    }
+//
+//    @Override
+//    public boolean moveNote(int position) {
+//        if (position < list.size() - 1) {
+//            Note note = list.remove(position);
+//            list.add(position + 1, note);
+//            return true;
+//        }
+//        return false;
+//    }
 }
 

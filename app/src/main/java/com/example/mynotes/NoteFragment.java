@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class NoteFragment extends Fragment {
@@ -38,6 +39,7 @@ public class NoteFragment extends Fragment {
     private CardNoteSource data;
     private MyAdapter adapter;
     private RecyclerView recyclerView;
+    private Note answer;
 
     public NoteFragment() {
     }
@@ -49,6 +51,14 @@ public class NoteFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_notes, container, false);
         initView(view);
         setHasOptionsMenu(true);
+        // Получим источник данных для списка
+        data = new CardsNoteSourceFirebaseImpl().init(new CardNoteSourceResponse() {
+            @Override
+            public void initialized(CardNoteSource cardsData) {
+                adapter.notifyDataSetChanged();
+            }
+        });
+        adapter.setDataSource(data);
         return view;
     }
 
@@ -104,7 +114,7 @@ public class NoteFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
-        adapter = new MyAdapter(data, this);
+        adapter = new MyAdapter(this);
         recyclerView.setAdapter(adapter);
 
         DividerItemDecoration itemDecoration = new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL);
@@ -130,9 +140,10 @@ public class NoteFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_add:
-                int position = data.addNote(new Note("Title " + data.size(), "SubTitle " + data.size(), R.drawable.ic_avatar_foreground));
-                adapter.notifyItemInserted(position);
-                recyclerView.smoothScrollToPosition(position);
+//                data.addNote(new Note("Title " + data.size(), "SubTitle " + data.size(), R.drawable.ic_avatar_foreground));
+                data.addNote(new Note("Title " + data.size(), "SubTitle " + data.size(), PictureIndexConverter.getPictureByIndex(PictureIndexConverter.randomPictureIndex())));
+                adapter.notifyItemInserted(data.size()-1);
+                recyclerView.smoothScrollToPosition(data.size()+1);
                 Log.d(TAG, "AddedNewList");
                 return true;
             case R.id.action_clear:
@@ -145,9 +156,8 @@ public class NoteFragment extends Fragment {
 
     private void initView(View view) {
         recyclerView = view.findViewById(R.id.recyclerView);
-        // Получим источник данных для списка
-        data = new CardNoteSourceImpl(getResources()).init();
         initRecyclerView();
+
     }
 
     @Override
@@ -169,12 +179,26 @@ public class NoteFragment extends Fragment {
                 data.deleteNote(position);
                 adapter.notifyItemRemoved(position);
                 return true;
-            case (R.id.action_move):
-                if (data.moveNote(position)) {
-                    adapter.notifyItemMoved(position, position + 1);
-                }
-                return true;
         }
         return super.onContextItemSelected(item);
     }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        collectCardData(currentNote);
+    }
+
+    private Note collectCardData(Note note) {
+        if (note != null) {
+            answer = new Note(note.getTitle(), note.getSubTitle(), note.getPicture());
+            answer.setId(note.getId());
+            return answer;
+        } else {
+            int picture = PictureIndexConverter.getPictureByIndex(PictureIndexConverter.randomPictureIndex());
+            return new Note(note.getTitle(), note.getSubTitle(), picture);
+        }
+    }
+
+
 }

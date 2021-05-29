@@ -28,9 +28,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         Log.d(TAG, "Constructor My Adapter");
     }
 
-    public MyAdapter(CardNoteSource cardNoteSource, Fragment fragment) {
-        this.cardNoteSource = cardNoteSource;
+//    public MyAdapter(CardNoteSource cardNoteSource, Fragment fragment) {
+//        this.cardNoteSource = cardNoteSource;
+//        this.fragment = fragment;
+//    }
+
+    public MyAdapter(Fragment fragment) {
         this.fragment = fragment;
+    }
+
+    public void setDataSource(CardNoteSource cardNoteSource) {
+        this.cardNoteSource = cardNoteSource;
+        notifyDataSetChanged();
     }
 
     @NonNull

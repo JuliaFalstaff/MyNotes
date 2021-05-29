@@ -4,13 +4,16 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.Date;
+import java.util.SplittableRandom;
 
 public class Note implements Parcelable {
+    private String id;
     private String title;
     private String subTitle;
     private String description;
     private int indexOfDescription;
     private int picture;
+    private Date date;
 
     public Note(String title, String subTitle, int picture) {
         this.title = title;
@@ -72,4 +75,18 @@ public class Note implements Parcelable {
     public int getIndexOfDescription() {
         return indexOfDescription;
     }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+
 }

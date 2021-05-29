@@ -1,6 +1,8 @@
 package com.example.mynotes;
 
 public interface CardNoteSource {
+    CardNoteSource init (CardNoteSourceResponse cardNoteSourceResponse);
+
     Note getCardNote(int position);
 
     int size();
@@ -9,10 +11,10 @@ public interface CardNoteSource {
 
     void updateNote(int position, Note note);
 
-    int addNote(Note note);
+    void addNote(Note note);
 
     void clearNote();
-
-    boolean moveNote(int position);
+//
+//    boolean moveNote(int position);
 }
 
