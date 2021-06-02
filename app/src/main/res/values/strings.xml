@@ -70,4 +70,8 @@
     <string name="data">data</string>
     <string name="settings_fragment">Settings Fragment</string>
     <string name="about_app_fragment">Hello! This amazing Notes Application was created for you during my online courses of android developing. Enjoy!</string>
+    <string name="alert_title">Warning</string>
+    <string name="message">Are you sure to delete?</string>
+    <string name="ok">Yes</string>
+    <string name="no">No</string>
 </resources>

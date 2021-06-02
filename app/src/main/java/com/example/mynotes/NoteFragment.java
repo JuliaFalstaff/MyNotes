@@ -1,12 +1,14 @@
 package com.example.mynotes;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -138,17 +140,36 @@ public class NoteFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
         switch (item.getItemId()) {
             case R.id.action_add:
-//                data.addNote(new Note("Title " + data.size(), "SubTitle " + data.size(), R.drawable.ic_avatar_foreground));
                 data.addNote(new Note("Title " + data.size(), "SubTitle " + data.size(), PictureIndexConverter.getPictureByIndex(PictureIndexConverter.randomPictureIndex())));
-                adapter.notifyItemInserted(data.size()-1);
-                recyclerView.smoothScrollToPosition(data.size()+1);
+                adapter.notifyItemInserted(data.size() - 1);
+                recyclerView.smoothScrollToPosition(data.size() + 1);
                 Log.d(TAG, "AddedNewList");
                 return true;
             case R.id.action_clear:
-                data.clearNote();
-                adapter.notifyDataSetChanged();
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle(R.string.alert_title)
+                        .setMessage(R.string.message)
+                        .setCancelable(true)
+                        .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(getContext(), "Подтверждено", Toast.LENGTH_SHORT).show();
+                                dialog.dismiss();
+                                data.clearNote();
+                                adapter.notifyDataSetChanged();
+                            }
+                        })
+                        .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(getContext(), "Отклонено", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .create()
+                        .show();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -176,8 +197,27 @@ public class NoteFragment extends Fragment {
                 adapter.notifyItemChanged(position);
                 return true;
             case R.id.action_delete:
-                data.deleteNote(position);
-                adapter.notifyItemRemoved(position);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle(R.string.alert_title)
+                        .setMessage(R.string.message)
+                        .setCancelable(true)
+                        .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(getContext(), "Подтверждено", Toast.LENGTH_SHORT).show();
+                                dialog.dismiss();
+                                data.deleteNote(position);
+                                adapter.notifyItemRemoved(position);
+                            }
+                        })
+                        .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(getContext(), "Отклонено", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .create()
+                        .show();
                 return true;
         }
         return super.onContextItemSelected(item);
@@ -199,6 +239,4 @@ public class NoteFragment extends Fragment {
             return new Note(note.getTitle(), note.getSubTitle(), picture);
         }
     }
-
-
 }
